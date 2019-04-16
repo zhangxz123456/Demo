@@ -1,0 +1,50 @@
+﻿<Window x:Class="MoviePlayer.Forms.DebugTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoviePlayer.Forms"
+        mc:Ignorable="d"
+        Title="DebugTest" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" WindowStyle="None">
+    <Grid >
+        <Viewbox Stretch=" fill" RenderTransformOrigin="0.594,0.667" Margin="0,0,0,0" Grid.ColumnSpan="2">
+            <Canvas Width="1920" Height="1080">
+                <Image x:Name="imageTop" HorizontalAlignment="Left" Height="184" VerticalAlignment="Top" Width="1922" Source="/MoviePlayer;component/Images/top.jpg"/>
+                <Image x:Name="imageTop01" HorizontalAlignment="Left" Height="156" Margin="0,184,0,0" VerticalAlignment="Top" Width="784" Source="/MoviePlayer;component/Images/top01.jpg"/>
+                <Image x:Name="imageTop02" HorizontalAlignment="Left" Height="156" VerticalAlignment="Top" Width="570" Source="/MoviePlayer;component/Images/top03.jpg" Canvas.Left="783" Canvas.Top="184"/>
+                <Image x:Name="imageTop03" HorizontalAlignment="Left" Height="156" Margin="1353,184,0,0" VerticalAlignment="Top" Width="569" Source="/MoviePlayer;component/Images/top02.png"/>
+                <Image x:Name="imageUp" HorizontalAlignment="Left" Height="185" Margin="0,340,0,0" VerticalAlignment="Top" Width="395" Source="/MoviePlayer;component/Images/up.jpg" MouseUp="imageUp_MouseUp" MouseDown="imageUp_MouseDown"/>
+                <Image x:Name="imageDown" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="387" Margin="395,340,0,0" Source="/MoviePlayer;component/Images/dowm.jpg" MouseUp="imageDown_MouseUp" MouseDown="imageDown_MouseDown"/>
+                <Image x:Name="imageNo1" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="395" Source="/MoviePlayer;component/Images/NO1.jpg" Margin="0,525,0,0" MouseUp="imageNo1_MouseUp"/>
+                <Image x:Name="imageNo2" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="395" Source="/MoviePlayer;component/Images/NO2.jpg" Margin="0,710,0,0" MouseUp="imageNo2_MouseUp"/>
+                <Image x:Name="imageNo3" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="395" Source="/MoviePlayer;component/Images/NO3.jpg" Margin="0,895,0,0" MouseUp="imageNo3_MouseUp"/>
+                <Image x:Name="imageNo4" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="387" Source="/MoviePlayer;component/Images/NO4.jpg" Margin="395,525,0,0"/>
+                <Image x:Name="imageNo5" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="387" Source="/MoviePlayer;component/Images/NO5.jpg" Margin="395,710,0,0"/>
+                <Image x:Name="imageNo6" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="387" Source="/MoviePlayer;component/Images/NO6.jpg" Margin="395,895,0,0"/>
+                <Image x:Name="imageSprayAir" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/sprayair.jpg" Canvas.Left="783" Canvas.Top="340" MouseUp="imageSprayAir_MouseUp"/>
+                <Image x:Name="imageSprayWater" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/spraywater.jpg" Canvas.Left="1070" Canvas.Top="340" MouseUp="imageSprayWater_MouseUp"/>
+                <Image x:Name="imageSweepLep" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/sweeplep.jpg" Canvas.Left="783" Canvas.Top="525" MouseUp="imageSweepLep_MouseUp"/>
+                <Image x:Name="imageVibration" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/vbration.jpg" Canvas.Left="1070" Canvas.Top="525" MouseUp="imageVibration_MouseUp"/>
+                <Image x:Name="imagePushBack" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/pushback.jpg" Canvas.Left="783" Canvas.Top="710" MouseUp="imagePushBack_MouseUp"/>
+                <Image x:Name="imageSmell" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/smell.jpg" Canvas.Left="1070" Canvas.Top="710" MouseUp="imageSmell_MouseUp"/>
+                <Image x:Name="imageCB" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/cb.jpg" Canvas.Left="783" Canvas.Top="895" MouseUp="imageCB_MouseUp"/>
+                <Image x:Name="imageCA" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/ca.jpg" Canvas.Left="1070" Canvas.Top="895" MouseUp="imageCA_MouseUp"/>
+                <Image x:Name="imageWind" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/wind.jpg" Canvas.Left="1353" Canvas.Top="340" MouseUp="imageWind_MouseUp"/>
+                <Image x:Name="imageLightning" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/lightning.jpg" Canvas.Left="1639" Canvas.Top="340" MouseUp="imageLightning_MouseUp"/>
+                <Image x:Name="imageRain" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/rain.jpg" Canvas.Left="1353" Canvas.Top="525" MouseUp="imageRain_MouseUp"/>
+                <Image x:Name="imageBubble" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/bubble.jpg" Canvas.Left="1639" Canvas.Top="525" MouseUp="imageBubble_MouseUp"/>
+                <Image x:Name="imageSnow" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/snow.jpg" Canvas.Left="1353" Canvas.Top="710" MouseUp="imageSnow_MouseUp"/>
+                <Image x:Name="imageFog" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/fog.jpg" Canvas.Left="1639" Canvas.Top="710" MouseUp="imageFog_MouseUp"/>
+                <Image x:Name="imageFire" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="286" Source="/MoviePlayer;component/Images/fire.jpg" Canvas.Left="1353" Canvas.Top="895" MouseUp="imageFire_MouseUp"/>
+                <Image x:Name="imageLaser" HorizontalAlignment="Left" Height="185" VerticalAlignment="Top" Width="283" Source="/MoviePlayer;component/Images/laser.jpg" Canvas.Left="1639" Canvas.Top="895" MouseUp="imageLaser_MouseUp"/>
+                <!--<Button x:Name="button"  Height="57" Canvas.Left="1801" Canvas.Top="68" Width="53" RenderTransformOrigin="-1,0.502" Cursor="Pen" Click="button_Click" BorderThickness="0" MouseMove="button_MouseMove" BorderBrush="{x:Null}" Background="#FF0FC4CE" Padding="0" VerticalAlignment="Top">
+                    <Image Source="/MoviePlayer;component/Images/close.png" VerticalAlignment="Top"/>
+                </Button>-->
+                <Button x:Name="button"  Height="57" Canvas.Left="1586" Canvas.Top="18" Width="53" RenderTransformOrigin="0,0" Cursor="Pen" Click="button_Click" BorderThickness="0" MouseMove="button_MouseMove" BorderBrush="#FF0FC4CE" Background="#FF0FC4CE" Padding="0" VerticalAlignment="Top" Content="×" FontSize="35" Visibility="Hidden">
+
+                </Button>
+                <Label x:Name="label" Content="X" Height="43" Canvas.Left="1870" Width="40" FontSize="30" MouseDown="label_MouseDown" RenderTransformOrigin="1.479,0.5" Canvas.Top="10"/>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</Window>

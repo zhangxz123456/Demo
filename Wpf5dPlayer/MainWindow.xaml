@@ -1,0 +1,42 @@
+﻿<Window x:Class="MoviePlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoviePlayer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1440" WindowState="Maximized" WindowStyle="None" Closed="Window_Closed" Icon="30001.ico" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Color x:Key="Color1">#FF526EB8</Color>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="233*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Stretch=" fill" RenderTransformOrigin="0.594,0.667" Margin="-2,-2,2,2" Grid.ColumnSpan="2">
+
+            <Canvas Width="1440" Height=" 900">
+                <Image x:Name="Image1_png" Height="905" Source="2.jpg" Stretch="Fill" Width="1450"/>
+                <Button x:Name="btnSetting" Content="Setting" Canvas.Left="572" Canvas.Top="346" Width="270" Height="270" FontSize="40" FontWeight="Bold" Background="#FFE1E1E1" Click="btnSetting_Click" BorderThickness="0"/>
+                <Button x:Name="btnHelp" Content="Help" Canvas.Left="572" Canvas.Top="616" Width="270" Height="128" FontSize="40" FontWeight="Bold" Click="btnHelp_Click" BorderThickness="0" Background="#FFC0C3D4"/>
+                <Button x:Name="btnData" Content="Data" Canvas.Left="572" Canvas.Top="744" Width="536" Height="161" FontSize="40" FontWeight="Bold" Click="btnData_Click" BorderThickness="0" Background="#FFE1E5F9"/>
+                <Button x:Name="btnPlayer" Content="Play" Canvas.Left="842" Canvas.Top="346" Width="266" Height="398" FontSize="40" FontWeight="Bold" Click="btnPlayer_Click" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Background="#FFB8C0F0"/>
+                <Button x:Name="btnDebug" Content="Test" Canvas.Left="1108" Canvas.Top="346" Width="337" Height="196" FontSize="40" FontWeight="Bold" Background="#FFC6CCEB" Click="btnDebug_Click" BorderThickness="0"/>
+                <Button x:Name="btnRegister" Content="Register" Canvas.Left="1108" Canvas.Top="542" Width="337" Height="363" FontSize="40" FontWeight="Bold" Click="btnRegister_Click" BorderThickness="0" Background="#FFB9BCCD"/>
+                <Label x:Name="label" Content="" Height="51" Canvas.Left="847" Canvas.Top="294" Width="261" FontSize="24"/>
+                <Label x:Name="label1" Content="" Height="46" Canvas.Left="847" Canvas.Top="249" Width="493" FontSize="24"/>
+                <Button x:Name="button" Content="x" Height="50" Canvas.Left="1005" Width="49" BorderThickness="0" FontSize="30" Padding="0" HorizontalAlignment="Center" RenderTransformOrigin="0.975,-0.034" Click="button_Click" Visibility="Hidden">
+                    <Button.Background>
+                        <SolidColorBrush Color="{DynamicResource Color1}"/>
+                    </Button.Background>
+                </Button>
+                <Label x:Name="label2" Content="X" Height="38" Canvas.Left="1400" Width="40" RenderTransformOrigin="0.174,0.109" FontSize="24" MouseDown="label2_MouseDown"/>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+
+
+</Window>

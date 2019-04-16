@@ -1,0 +1,391 @@
+﻿<Window x:Class="Wpf5dPlayer.PlayerNew"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:dc="clr-namespace:DevComponents.WpfRibbon;assembly=DevComponents.WpfRibbon"
+    xmlns:local="clr-namespace:Wpf5dPlayer"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:f="clr-namespace:AxShockwaveFlashObjects;assembly=AxInterop.ShockwaveFlashObjects"  
+    Name="PlayerWin" Height="500" Width="800" Icon="Images/VP.bmp"
+    Closed="PlayerWin_Closed" Loaded="PlayerWin_Loaded" SnapsToDevicePixels="False"  Closing="PlayerWin_Closing" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" >
+    <Window.Resources>
+        <!--<local:DoubleConverter x:Key="doubleConverter"/>-->
+    </Window.Resources>
+    <Grid Width="Auto" Name="GridPlayer" dc:Ribbon.VisualStyle="Office2010Blue" Margin="0,0,0,0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="147*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Name="stackPanel" Grid.ColumnSpan="2">
+            <StackPanel.Background>
+                <ImageBrush x:Name="imageBrush"/>
+            </StackPanel.Background>
+        </StackPanel>
+        <Grid Width="Auto" Name="Main" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="210"/>
+            </Grid.ColumnDefinitions>
+            <Grid Width="Auto" Name="MainGrid" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <!--菜单栏-->
+                <Grid Height="Auto" Name="GridTitle" Grid.Row="0" Opacity="0.7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Menu Name="MenuMain">
+                        <MenuItem Header="   文  件   " Name="MenuFile" FontSize="14">
+                            <MenuItem Header="   打 开 文 件  " PreviewMouseLeftButtonDown="ImgOpen_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="    打 开 URL   " PreviewMouseLeftButtonDown="MenuItem_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="   添 加 图 片  " PreviewMouseLeftButtonDown="Add_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="选 择 背 景 图 片" Name="ChangeImages">
+                                <MenuItem Header="  自 定 义  " Tag="ACustom" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                                <Separator></Separator>
+                                <MenuItem Header="   默  认   " Tag="DefaultImages" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                                <Separator></Separator>
+                                <MenuItem Header="   春  绿   " Tag="SpringGreen" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="   夏  蓝   " Tag="SummerBlue" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="   秋  黄   " Tag="AutumnYellow" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="   冬  白   " Tag="WinterWhite" PreviewMouseLeftButtonDown="ChangeImages_PreviewMouseLeftButtonDown"></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="取 消 背 景 图 片" Name="CancelImages" PreviewMouseLeftButtonDown="CancelImages_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="   更 换 颜 色" Name="ChangeColer">
+                                <MenuItem Header=" 自 定 义 " Name="Custom" Tag="Custom" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <Separator></Separator>
+                                <MenuItem Header="  默  认" Name="Colors" Tag="LightBlue" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <Separator></Separator>
+                                <MenuItem Header="  米  色" Tag="Beige" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  天  蓝" Tag="SkyBlue" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  麦  色" Tag="Wheat" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  紫  色" Tag="Violet" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  青  蓝" Tag="SlateBlue" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  暗  紫" Tag="MediumPurple" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  浅  绿" Tag="LightGreen" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  粉  红" Tag="HotPink" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  青  灰" Tag="LightSlateGray" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  金  黄" Tag="Gold" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  深  紫" Tag="DarkViolet" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                                <MenuItem Header="  赤  红" Tag="Crimson" PreviewMouseLeftButtonDown="Colors_PreviewMouseLeftButtonDown"></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="   默 认 大 小" Name="DefaultSize" PreviewMouseLeftButtonDown="DefaultSize_PreviewMouseLeftButtonDown"></MenuItem>
+                            <!--<MenuItem Header="    截    屏" PreviewMouseLeftButtonDown="ImgScreen_PreviewMouseLeftButtonDown"></MenuItem>-->
+                            <MenuItem Header="    退    出" Name="WinClose" PreviewMouseLeftButtonDown="WinClose_PreviewMouseLeftButtonDown"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="   播  放   " Name="MenuPlay" FontSize="14">
+                            <MenuItem Header=" 播 放 \ 暂 停 " PreviewMouseLeftButtonDown="ImgPlayer_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="   上 一 个  " PreviewMouseLeftButtonDown="ImgPre_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="   下 一 个  " PreviewMouseLeftButtonDown="ImgNext_PreviewMouseLeftButtonDown"></MenuItem>
+                            <MenuItem Header="  播 放 模 式" Name="ModePlay">
+                                <MenuItem Header=" 重 复 播 放 " Name="ChangeMode" Tag="RepeatPlay" PreviewMouseLeftButtonDown="ChangeMode_PreviewMouseLeftButtonDown"></MenuItem>
+                                <!--<MenuItem Header=" 循 环 播 放 " Tag="OrderPlay" PreviewMouseLeftButtonDown="ChangeMode_PreviewMouseLeftButtonDown"></MenuItem>-->
+                                <MenuItem Header=" 顺 序 播 放 " Name="LoopP" Tag="LoopPlay" PreviewMouseLeftButtonDown="ChangeMode_PreviewMouseLeftButtonDown"></MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="    停  止   " PreviewMouseLeftButtonDown="ImgStop_PreviewMouseLeftButtonDown"></MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="   帮  助   " Name="MenuHelp" FontSize="14">
+                            <MenuItem Header="   关  于   " Name="AboutPlayer" PreviewMouseLeftButtonDown="AboutPlayer_PreviewMouseLeftButtonDown"></MenuItem>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+
+                <!--屏幕显示-->
+                <Grid Height="Auto" Name="GridInk" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="0"/>
+                    </Grid.ColumnDefinitions>
+                    <!--图片-->
+                    <Grid Name="MainPlay" Grid.Column="1">
+                        <ListBox Name="lv" Background ="Transparent" ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Loaded="lv_Loaded" SelectionChanged="lv_SelectionChanged">
+
+                            <ListBox.ItemsPanel>
+
+                                <ItemsPanelTemplate>
+
+                                    <WrapPanel/>
+
+                                </ItemsPanelTemplate>
+
+                            </ListBox.ItemsPanel>
+
+                            <ListBox.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <Grid Margin="10" Width="230" Height="350">
+
+                                        <Grid.RowDefinitions>
+
+                                            <RowDefinition Height="Auto" ></RowDefinition>
+
+                                            <RowDefinition Height="Auto" ></RowDefinition>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Image x:Name="img" Cursor="Hand" Source="{Binding ImagePath}" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"  MouseLeftButtonDown="img_MouseLeftButtonDown" >
+                                            <Image.Style>
+                                                <Style TargetType="{x:Type Image}">
+                                                    <Setter Property="Width" Value="200"/>
+                                                    <Setter Property="Height" Value="300"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Image.IsMouseOver" Value="true">
+                                                            <Setter Property="Width" Value="220"/>
+                                                            <Setter Property="Height" Value="320"/>
+                                                        </Trigger>
+
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
+                                        <TextBlock Text="{Binding MovieName}"  x:Name="imgname"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="FontSize" Value="12"/>
+                                                    <Setter Property="Height" Value="20"/>
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Image.IsMouseOver" Value="true">
+                                                            <Setter Property="FontSize" Value="14"/>
+                                                            <Setter Property="Height" Value="30"/>
+                                                            <Setter Property="Foreground" Value="WhiteSmoke"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+
+                                </DataTemplate>
+
+                            </ListBox.ItemTemplate>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListBoxItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListBoxItem">
+                                                <Border Name="Border" Padding="2" SnapsToDevicePixels="true"  Margin="0">
+                                                    <ContentPresenter/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="Border" Property="Background" Value="#FF383A3A"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                        </ListBox>
+                        <!--<Image x:Name="ImgAdd" ToolTip="添加图片" Cursor="Hand" VerticalAlignment="Bottom"  HorizontalAlignment="Left"  Tag="per"
+                        Source="Images/Add.bmp" PreviewMouseLeftButtonDown="Add_PreviewMouseLeftButtonDown"  Margin="0,315,1,0" Width="39" Opacity="0.5" />-->
+                        <!--<Image x:Name="ImgDel" ToolTip="删除图片" Cursor="Hand" VerticalAlignment="Bottom"  HorizontalAlignment="Right"  Tag="per"
+                        Source="Images/Del.jpg" PreviewMouseLeftButtonDown="ImgDel_PreviewMouseLeftButtonDown"  Margin="0,315,1,0" Width="39" Opacity="0.5" />-->
+                    </Grid>
+                </Grid>
+
+                <!--时间显示-->
+                <Grid Grid.Row="2" Width="Auto" Name="GridTime" DataContextChanged="GridTime_DataContextChanged">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="tbText" ToolTip="播放文件名称" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <TextBlock x:Name="tbSeek" ToolTip="播放时间" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
+                    <TextBlock x:Name="tbTime" ToolTip="系统时间" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="14"/>
+                </Grid>
+
+                <!--时间滚动条-->
+                <Grid Grid.Row="3" Width="Auto" x:Name="PlayerTime">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel VerticalAlignment="Top" Grid.Column="0">
+                        <Slider Name="SliPlayerTime" VerticalAlignment="Top" Cursor="Hand" Value="0" Opacity="0.7" Margin="3,0,0,0" ValueChanged="SliPlayerTime_ValueChanged" PreviewMouseDown="SliPlayerTime_PreviewMouseDown" PreviewMouseUp="SliPlayerTime_PreviewMouseUp" x:FieldModifier="public"></Slider>
+                    </DockPanel>
+                </Grid>
+
+                <!--控制面板-->
+                <Grid Grid.Row="5" Width="Auto" x:Name="SPTool" Height="Auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="45"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1" Margin="0">
+                        <Image x:Name="ImgPlayer" ToolTip="播放" Cursor="Hand" Tag="play" VerticalAlignment="Center"  HorizontalAlignment="Center"
+                         Source="Images\play.png" PreviewMouseLeftButtonDown="ImgPlayer_PreviewMouseLeftButtonDown" Margin="1,0,1,0" Visibility="Collapsed" />
+                        <Image x:Name="ImgPause" ToolTip="暂停" Cursor="Hand" Tag="play"
+                       HorizontalAlignment="Center" Source="Images\pause.png" PreviewMouseLeftButtonDown="ImgPlayer_PreviewMouseLeftButtonDown" Margin="0,1,6,0" Height="39" VerticalAlignment="Top"/>
+                    </Grid>
+                    <Grid Grid.Column="2" Margin="0">
+                        <Image x:Name="ImgStop" ToolTip="停止" Cursor="Hand"  HorizontalAlignment="Center"  Tag="stop"
+                       Source="Images\stop.png" PreviewMouseLeftButtonDown="ImgStop_PreviewMouseLeftButtonDown" Margin="1,3,1,4"/>
+                    </Grid>
+                    <Grid Grid.Column="3" Margin="0">
+                        <Image x:Name="ImgPre" ToolTip="上一个" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="per"
+                       Source="Images\Pre.png" PreviewMouseLeftButtonDown="ImgPre_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>
+                    </Grid>
+                    <Grid Grid.Column="4" Margin="0">
+                        <Image x:Name="ImgNext" ToolTip="下一个" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="next"
+                   Source="Images\Next.png" PreviewMouseLeftButtonDown="ImgNext_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>
+                    </Grid>
+                    <Grid Grid.Column="5" Margin="0">
+                        <Image x:Name="ImgOpen" ToolTip="打开文件" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="open"
+                       Source="Images\Open.png" PreviewMouseLeftButtonDown="ImgOpen_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>
+                    </Grid>
+                    <Grid Grid.Column="7" Margin="0">
+                        <!--<Image x:Name="ImgCamera" ToolTip="摄像设备选择" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="Camera"
+                       Source="Images\Camera.ico" PreviewMouseLeftButtonDown="ImgCamera_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>-->
+                    </Grid>
+                    <Grid Grid.Column="9" Margin="0">
+                        <!--<Image x:Name="ImgScreen" ToolTip="截图" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="screen"
+                       Source="Images\Screen.bmp" PreviewMouseLeftButtonDown="ImgScreen_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="ImgScreen_PreviewMouseRightButtonDown" Margin="1,0,1,0"/>-->
+                    </Grid>
+                    <Grid Grid.Column="11" Margin="0">
+                        <Image x:Name="ImgMute2" ToolTip="声音" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="mute"
+                       Source="Images\Mute2.png" PreviewMouseLeftButtonDown="ImgMute_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>
+                        <Image x:Name="ImgMute" ToolTip="静音" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="mute"
+                       Source="Images\Mute.png" PreviewMouseLeftButtonDown="ImgMute_PreviewMouseLeftButtonDown" Margin="1,0,1,0"/>
+                    </Grid>
+                    <!--声音滚动条-->
+                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="12">
+                        <Slider Cursor="Hand" x:Name="SldVolumn" ValueChanged="SldVolumn_ValueChanged" Width="80" Margin="1,0,5,0" Maximum="1"/>
+                    </DockPanel>
+                </Grid>
+            </Grid>
+            <!--播放列表-->
+            <Grid Width="Auto" Name="ListGrid" Grid.Column="1" Opacity="0.7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Name="Head" Width="Auto" Grid.Row="0">
+                    <Button x:Name="but_Cancel" Content="注销" Background="Transparent" BorderThickness="0" BorderBrush="Transparent"  FontStyle="Normal"  HorizontalAlignment="Left" FontSize="9" Margin="1,1,1,1" Click="but_Cancel_Click"  Width="40" Visibility="Collapsed">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Image.IsMouseOver" Value="true">
+                                        <Setter Property="Foreground">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="#FF0080FF"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="but_login" Content="管理员登录" Background="Transparent" BorderThickness="0" BorderBrush="Transparent"  FontStyle="Normal"  HorizontalAlignment="Center" FontSize="9" Margin="1,1,1,1" Click="but_login_Click" >
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Image.IsMouseOver" Value="true">
+
+                                        <Setter Property="Foreground">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="#FF0097FF"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Label Name="lab_username" Content="we" HorizontalAlignment="Right" FontStyle="Normal" VerticalAlignment="Center" Margin="0,0,0,1" FontSize="11"  Height="23" Width="130" RenderTransformOrigin="-0.86,1.059" Visibility="Collapsed" ></Label>
+                </Grid>
+                <Grid Name="Last" Width="Auto" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--列表-->
+                    <Grid Width="Auto" Name="List" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="105"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Name="DisplayListName" Text="播 放 列 表 ：" FontSize="15" Grid.Row="0"></TextBlock>
+                        <Grid Width="Auto" Name="PlayerList" Grid.Row="1">
+                            <!---->
+                        <ListView Name="ListView" FontSize="14"   PreviewMouseDoubleClick="ListView_PreviewMouseDoubleClick" IsSynchronizedWithCurrentItem="True" SelectionChanged="ListView_SelectionChanged">
+          <!--选中图片改变列表选项的背景颜色-->
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <Border Name="Border" Padding="2" SnapsToDevicePixels="true" Background="LightBlue" Margin="0">
+                                                    <ContentPresenter/>
+                                                </Border>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="true">
+                                                        <Setter TargetName="Border" Property="Background" Value="Red"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <!--<ListView.ItemContainerStyle>
+            <Style TargetType="{x:Type ListViewItem}">
+                <Setter Property="Background" Value="Lightblue"/>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="true">
+                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Focusable" Value="True"/>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="true">
+                        <Setter Property="Background" Value="Yellow"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ListView.ItemContainerStyle>-->
+                            </ListView>
+                        </Grid>
+                        <Grid Width="Auto" Name="AddFile" Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="ImgAddFile" Grid.Column="1" ToolTip="添加" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="addFile"
+                                   Source="Images\AddFile.jpg" PreviewMouseLeftButtonDown="ImgAddFile_PreviewMouseLeftButtonDown"/>
+                            <Image x:Name="ImgRemoveFile" Grid.Column="2" ToolTip="删除" Cursor="Hand" VerticalAlignment="Center" HorizontalAlignment="Center" Tag="removeFile"
+                                   Source="Images\RemoveFile.jpg" PreviewMouseLeftButtonDown="ImgRemoveFile_PreviewMouseLeftButtonDown"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
+

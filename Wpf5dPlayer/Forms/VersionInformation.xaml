@@ -1,0 +1,41 @@
+﻿<Window x:Class="MoviePlayer.Forms.VersionInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoviePlayer.Forms"
+        mc:Ignorable="d"
+        Title="VersionInformation" Height="373.5" Width="460" Icon="/MoviePlayer;component/30001.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="348" VerticalAlignment="Top" Width="450">
+            <TabItem Header="Version" Name="tabVersion">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-4,-3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition Width="74*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textBox" Grid.ColumnSpan="7" HorizontalAlignment="Left" Height="324" TextWrapping="Wrap" Text=" &#xA; Software version number：V6.2.4&#xA; Website：www.shuqee.com&#xA; Telephone：0086 020- 34885536&#xA; Address：Bldg 3.Fucheng industrial park,shilian        road,shiji village,shiji town,panyu district,guangzhou,CN.&#xA; Email：shueee@shuqee.com&#xA;    &#xA;     Copyright by Guangzhou Shuqee Digital Tech. Co., Ltd. Any company or personal can not copy this software!" VerticalAlignment="Top" Width="448" FontSize="18"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Update Record" Name="tabUpdateRecord">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="411*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="311" TextWrapping="Wrap" Text="***********************************************&#xA;Shuqee version update: V6.2.4&#xA;Last update at: 2019/4/11&#xA;Update content: Remove redundant code                    change the test interface&#xA;***********************************************&#xA;Shuqee version update: V6.2.3&#xA;Last update at: 2019/3/27&#xA;Update content: put all kind of software together&#xA;***********************************************&#xA;***********************************************&#xA;Shuqee version update: V6.2.2&#xA;Last update at: 2018/12/27&#xA;Update content: change the data about timer&#xA;***********************************************&#xA;&#xA;***********************************************&#xA;Shuqee version update: V6.2.1&#xA;Last update at: 2018/10/25&#xA;Update content: upgrade the software as a whole, modify the communication mode, increase the frequency of data transmission, and increase data collection points&#xA;***********************************************" VerticalAlignment="Top" Width="444" FontSize="18" Grid.ColumnSpan="6"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

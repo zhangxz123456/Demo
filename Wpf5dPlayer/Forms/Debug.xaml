@@ -1,0 +1,54 @@
+﻿<Window x:Class="MoviePlayer.Forms.Debugging"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoviePlayer"
+        mc:Ignorable="d"
+        Title="Debug" Height="900" Width="1440" WindowState="Maximized" Closed="Window_Closed" ResizeMode="NoResize" WindowStyle="None" >
+    <Window.Resources>
+        <Color x:Key="Color1">#FFDDDDDD</Color>
+        <Style x:Key="ImageStyle1" TargetType="{x:Type Image}">
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,-2,0">
+        <Viewbox Stretch=" fill" RenderTransformOrigin="0.594,0.667" Margin="-2,-2,2,2" Grid.ColumnSpan="2">
+            <Canvas Width="1440" Height="900">
+                <Button x:Name="button" Content="Up" HorizontalAlignment="Left" VerticalAlignment="Top" Width="276" Canvas.Left="-3" Canvas.Top="155" Height="187" FontSize="48" FontWeight="Black" Click="button_Click" BorderThickness="0" Background="#FF9CBEDD"/>
+                <Label x:Name="label" Content="  &#xD;&#xA; Movement Testing" HorizontalAlignment="Left" VerticalAlignment="Top" Height="155" Width="557" Background="#FF253F95" HorizontalContentAlignment="Center" Canvas.Left="2" FontSize="40" FontWeight="Black"/>
+                <Label x:Name="label1" Content="&#xD;&#xA;4DM CINEMA DEBUG WINDOW&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Height="155" Width="882" Background="#FF195FC3" HorizontalContentAlignment="Center" Canvas.Left="559" FontSize="40" FontWeight="Black"/>
+                <Button x:Name="button1" Content="Down" Canvas.Left="273" Canvas.Top="155" Width="286" Height="187" RenderTransformOrigin="0.064,0.03" FontSize="48" FontWeight="Black" BorderThickness="0" Background="#FFAEC4DD" Click="button1_Click"/>
+                <Label x:Name="label2" Content=" &#xA;     No.1" Canvas.Left="-3" Canvas.Top="342" Height="185" Width="276" Background="#FF96C8E3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderThickness="0" BorderBrush="#FF707070" MouseUp="label2_MouseUp"/>
+                <Label x:Name="label3" Content=" &#xA;     No.2" Canvas.Left="-3" Canvas.Top="527" Height="185" Width="276" Background="#FFB6C8E3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderThickness="0" BorderBrush="#FF707070" MouseUp="label3_MouseUp"/>
+                <Label x:Name="label4" Content=" &#xA;     No.3" Canvas.Left="-3" Canvas.Top="712" Height="190" Width="276" Background="#FFA6C8E3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderThickness="0" BorderBrush="#FF707070" MouseUp="label4_MouseUp"/>
+                <Label x:Name="label5" Content=" &#xA;     No.4" Canvas.Left="273" Canvas.Top="342" Height="185" Width="286" Background="#FFB6C8EE" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderThickness="0" BorderBrush="#FF707070" MouseUp="label5_MouseUp"/>
+                <Label x:Name="label6" Content=" &#xA;     No.5" Canvas.Left="273" Canvas.Top="527" Height="185" Width="286" Background="#FF9EAFD3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderThickness="0" BorderBrush="#FF707070"/>
+                <Label x:Name="label7" Content=" &#xA;     No.6" Canvas.Left="273" Canvas.Top="712" Height="190" Width="286" Background="#FFB5C6D9" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="48" BorderBrush="#FF707070" BorderThickness="0"/>
+                <Image x:Name="image" Height="190" Canvas.Left="559" Canvas.Top="712" Width="176" Source="/Wpf5dPlayer;component/Images/lightning.jpg" Stretch="Fill" MouseUp="image_MouseUp"/>
+                <Image x:Name="image1" Height="185" Canvas.Left="735" Canvas.Top="527" Width="176" Source="/Wpf5dPlayer;component/Images/wind.jpg" Stretch="Fill" MouseUp="image1_MouseUp"/>
+                <Image x:Name="image2" Height="185" Canvas.Left="911" Canvas.Top="527" Width="176" Source="/Wpf5dPlayer;component/Images/bubble.jpg" Stretch="Fill" MouseUp="image2_MouseUp"/>
+                <Image x:Name="image3" Height="185" Canvas.Left="1087" Canvas.Top="527" Width="176" Source="/Wpf5dPlayer;component/Images/fog.jpg" Stretch="Fill" MouseUp="image3_MouseUp"/>
+                <Image x:Name="image4" Height="185" Canvas.Left="1263" Canvas.Top="527" Width="178" Source="/Wpf5dPlayer;component/Images/fire.jpg" Stretch="Fill" MouseUp="image4_MouseUp"/>
+                <Image x:Name="image5" Height="190" Canvas.Left="735" Canvas.Top="712" Width="176" Source="/Wpf5dPlayer;component/Images/snow.jpg" Stretch="Fill" MouseUp="image5_MouseUp"/>
+                <Image x:Name="image6" Height="187" Canvas.Left="1262" Canvas.Top="155" Width="179" Source="/Wpf5dPlayer;component/Images/laser.jpg" Stretch="Fill" MouseUp="image6_MouseUp"/>
+                <Image x:Name="image7" Height="185" Canvas.Left="559" Canvas.Top="527" Width="176" Source="/Wpf5dPlayer;component/Images/rain.jpg" Stretch="Fill" MouseUp="image7_MouseUp" Style="{DynamicResource ImageStyle1}"/>
+                <Image x:Name="image8" Height="190" Canvas.Left="1263" Canvas.Top="712" Width="178" Source="/Wpf5dPlayer;component/Images/CA.jpg" Stretch="Fill" MouseUp="image8_MouseUp"/>
+                <Image x:Name="image9" Height="190" Canvas.Left="1087" Canvas.Top="712" Width="176" Source="/Wpf5dPlayer;component/Images/CB.jpg" Stretch="Fill" MouseUp="image9_MouseUp"/>
+                <Image x:Name="image10" Height="190" Canvas.Left="911" Canvas.Top="712" Width="176" Source="/Wpf5dPlayer;component/Images/smell.jpg" Stretch="Fill" MouseUp="image10_MouseUp"/>
+                <Image x:Name="image11" Height="185" Canvas.Left="559" Canvas.Top="342" Width="176" Source="/Wpf5dPlayer;component/Images/vibration.jpg" Stretch="Fill" MouseUp="image11_MouseUp"/>
+                <Image x:Name="image12" Height="185" Canvas.Left="735" Canvas.Top="342" Width="176" Source="/Wpf5dPlayer;component/Images/sweep leg.jpg" Stretch="Fill" MouseUp="image12_MouseUp"/>
+                <Image x:Name="image13" Height="185" Canvas.Left="1087" Canvas.Top="342" Width="176" Source="/Wpf5dPlayer;component/Images/spray water.jpg" Stretch="Fill" MouseUp="image13_MouseUp"/>
+                <Image x:Name="image14" Height="185" Canvas.Left="911" Canvas.Top="342" Width="176"  Stretch="Fill" Source="/Wpf5dPlayer;component/Images/spray air.jpg" MouseUp="image14_MouseUp"/>
+                <Image x:Name="image15" Height="185" Canvas.Left="1263" Canvas.Top="342" Width="178" Source="/Wpf5dPlayer;component/Images/push back.jpg" Stretch="Fill" MouseUp="image15_MouseUp"/>
+                <Label x:Name="label8" Content="                &#xD;&#xA;              Effect Testing" Canvas.Left="559" Canvas.Top="155" Height="187" Width=" 704" Background="#FFB2DAEB" FontSize="48" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Canvas>
+        </Viewbox>
+
+        <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
+            <MenuItem Header="Close" Click="MenuItem_Click">
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

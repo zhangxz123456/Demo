@@ -1,0 +1,27 @@
+﻿<Window x:Class="Wpf5dPlayer.Player"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf5dPlayer"
+        mc:Ignorable="d"
+        Title="Player" Height="900" Width="1440" WindowState="Maximized" WindowStyle="None" Background="#FFD3D0D3">
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="720" Margin="5,165,0,0" VerticalAlignment="Top" Width="350" Background="#FFFAFFFF" SelectionChanged="listBox_SelectionChanged">
+            <ListView x:Name="listView" Height="710" Width="345">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ListBox>
+        <Button x:Name="btnSelect"  Content="选片" HorizontalAlignment="Left" Margin="430,665,0,0" VerticalAlignment="Top" Width="175" Height="175" FontSize="48" Background="#FF8C9EDE" Click="btnSelect_Click"/>
+        <Button x:Name="btnPlay" Content="播放" HorizontalAlignment="Left" Margin="630,665,0,0" VerticalAlignment="Top" Width="175" Height="175" FontSize="48" Click="btnPlay_Click"/>
+        <Button x:Name="btnPause" Content="暂停" HorizontalAlignment="Left" Margin="830,665,0,0" VerticalAlignment="Top" Width="175" Height="175" FontSize="48" Click="btnPause_Click"/>
+        <Button x:Name="btnStop" Content="停止" HorizontalAlignment="Left" Margin="1030,665,0,0" VerticalAlignment="Top" Width="175" Height="175" FontSize="48" Click="btnStop_Click"/>
+        <Button x:Name="btnClose" Content="关闭" HorizontalAlignment="Left" Margin="1230,665,0,0" VerticalAlignment="Top" Width="175" Height="175" FontSize="48" Click="btnClose_Click"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="445,540,0,0" VerticalAlignment="Top" Height="80" Width="820" Padding="0" Maximum="100"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="50" Margin="1065,360,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>
