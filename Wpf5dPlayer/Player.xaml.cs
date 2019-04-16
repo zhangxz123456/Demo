@@ -431,44 +431,6 @@ namespace MoviePlayer
         }
 
         /// <summary>
-        /// 点击屏幕播放\暂停
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void InkCanvas_Player_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                PlayOrPause();
-            }
-        }
-
-        /// <summary>
-        /// 播放或暂停
-        /// </summary>
-        public void PlayOrPause()
-        {
-
-            if (!string.IsNullOrEmpty(UserControlClass.FileName))
-            {
-
-                if (!UserControlClass.FileName.Contains(".swf") && UserControlClass.FileName != "Camera")
-                {
-                    if (UserControlClass.MSStatus == MediaStatus.Play)
-                    {
-                        UserControlClass.MSStatus = MediaStatus.Pause;
-                        Pause();
-                    }
-                    else
-                    {
-                        UserControlClass.MSStatus = MediaStatus.Play;
-                        Play();
-                    }
-                }
-            }
-            ChangeShowPlay();
-        }
-        /// <summary>
         /// 时间轴控制
         /// </summary>
         /// <param name="sender"></param>
@@ -683,15 +645,7 @@ namespace MoviePlayer
             }
         }
 
-        /// <summary>
-        /// 播放器默认大小
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DefaultSize_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            WindowState = System.Windows.WindowState.Normal;
-        }
+     
 
         #region  播放列表右键菜单
         /// <summary>
@@ -824,10 +778,7 @@ namespace MoviePlayer
             {
                 switch (UserControlClass.MSStatus)
                 {
-                    case MediaStatus.Pause:
-                        //ImgPlayer.Visibility = Visibility.Hidden;
-                        //ImgPause.Visibility = Visibility.Visible;
-                        //btnPlay.Content = "Play";
+                    case MediaStatus.Pause:                    
                         FileInfo fo = new FileInfo(MainWindow.playerPath + @"\Images\" + "play.jpg");
                         if (fo.Exists)
                         {
@@ -839,7 +790,6 @@ namespace MoviePlayer
                         }
                         break;
                     case MediaStatus.Play:
-
                         FileInfo finfo = new FileInfo(MainWindow.playerPath + @"\Images\" + "pause.jpg");
                         if (finfo.Exists)
                         {
@@ -1303,7 +1253,6 @@ namespace MoviePlayer
         //    ScreenJug();
         //}
         #endregion
-
 
 
         /// <summary>
@@ -1885,16 +1834,7 @@ namespace MoviePlayer
                 this.Top = (screen.WorkingArea.Height - this.Height) / 2;
             }
         }
-
-        /// <summary>
-        /// 进度条的变换
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GridTime_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            ListView.SelectedValue = UserControlClass.FileName;
-        }
+     
 
         /// <summary>   
         /// 客户端键盘捕捉事件.   

@@ -28,12 +28,7 @@
                 <Button x:Name="btnRegister" Content="Register" Canvas.Left="1108" Canvas.Top="542" Width="337" Height="363" FontSize="40" FontWeight="Bold" Click="btnRegister_Click" BorderThickness="0" Background="#FFB9BCCD"/>
                 <Label x:Name="label" Content="" Height="51" Canvas.Left="847" Canvas.Top="294" Width="261" FontSize="24"/>
                 <Label x:Name="label1" Content="" Height="46" Canvas.Left="847" Canvas.Top="249" Width="493" FontSize="24"/>
-                <Button x:Name="button" Content="x" Height="50" Canvas.Left="1005" Width="49" BorderThickness="0" FontSize="30" Padding="0" HorizontalAlignment="Center" RenderTransformOrigin="0.975,-0.034" Click="button_Click" Visibility="Hidden">
-                    <Button.Background>
-                        <SolidColorBrush Color="{DynamicResource Color1}"/>
-                    </Button.Background>
-                </Button>
-                <Label x:Name="label2" Content="X" Height="38" Canvas.Left="1400" Width="40" RenderTransformOrigin="0.174,0.109" FontSize="24" MouseDown="label2_MouseDown"/>
+                <Label x:Name="labClose" Content="X" Height="38" Canvas.Left="1400" Width="40" RenderTransformOrigin="0.174,0.109" FontSize="24" MouseDown="labClose_MouseDown"/>
             </Canvas>
         </Viewbox>
     </Grid>

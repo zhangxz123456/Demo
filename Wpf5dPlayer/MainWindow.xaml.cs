@@ -37,7 +37,7 @@ namespace MoviePlayer
         public static string PlayType;               //播放器类型 4DM为4DM播放器 5D为5D播放器
         public static string PlayLanguage;           //播放器语言 EN为英文播放器 CN为中文播放器   
         public static string PlayDOF;                //自由度类型 2DOF为两自由度播放器 3DOF为三自由度播放器
-        public static string playerPath;
+        public static string playerPath;             
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(
@@ -54,12 +54,10 @@ namespace MoviePlayer
             getPlayerPath();
             SystemParametersInfo(20, 0, playerPath + @"\Images\" + "shuqee.bmp", 0x2);          
             Module.GetNowTime();
-            Module.readUuidFile();
-            //Module.nowTimeStr = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");         
+            Module.readUuidFile();                
             ReadType();
             SelectMode();
             myUdpInit.udpInit();
-            //btnPlayer.Visibility = Visibility.Hidden; 
             Thread.Sleep(2000);
             timerInit();
             changeBackgroundImage();
@@ -105,6 +103,11 @@ namespace MoviePlayer
             }
         }
 
+
+        /// <summary>
+        /// image控制更改图片实现函数
+        /// </summary>
+        /// <param name="strImageName"></param>
         private void functionChangeImage(string strImageName)
         {
 
@@ -300,12 +303,7 @@ namespace MoviePlayer
             //SelectMode();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {            
-            System.Windows.Application.Current.Shutdown();
-        }
-
-        private void label2_MouseDown(object sender, MouseButtonEventArgs e)
+        private void labClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
