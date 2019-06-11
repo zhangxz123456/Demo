@@ -37,7 +37,9 @@ namespace MoviePlayer
         public static string PlayType;               //播放器类型 4DM为4DM播放器 5D为5D播放器
         public static string PlayLanguage;           //播放器语言 EN为英文播放器 CN为中文播放器   
         public static string PlayDOF;                //自由度类型 2DOF为两自由度播放器 3DOF为三自由度播放器
-        public static string playerPath;             
+        public static string playerPath;
+        public static double PlayHeight;             //高度数据  1为原始数据 0.9为百分90行程数据
+        public static string PlayProjector;          //设置播放画面显示在主屏还是副屏  参数分别为0或1
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(
@@ -286,6 +288,8 @@ namespace MoviePlayer
                 PlayType = element["Style"].InnerText;
                 PlayLanguage = element["Language"].InnerText;
                 PlayDOF = element["DOF"].InnerText;
+                PlayHeight = Double.Parse(element["Height"].InnerText);
+                PlayProjector = element["Projector"].InnerText;
             }
         }
 

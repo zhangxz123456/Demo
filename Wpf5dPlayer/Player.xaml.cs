@@ -349,8 +349,11 @@ namespace MoviePlayer
             //如果有多个屏幕，就定义secondwindow的位置，让他在第二个屏幕全屏显示                                                      
             if (sc1.Length > 1)
             {
-                //var workingArea = sc1[1].Bounds; 
-                var workingArea = sc1[0].WorkingArea;
+                var workingArea = sc1[1].Bounds;           //展厅投影系统
+                if (MainWindow.PlayProjector.Equals("0"))
+                {
+                    workingArea = sc1[0].WorkingArea;
+                }
                 UserControlClass.NullBorderWin(UserControlClass.sc2.returnWinSc2(), workingArea.Left, workingArea.Top, workingArea.Width, workingArea.Height);
             }
             else

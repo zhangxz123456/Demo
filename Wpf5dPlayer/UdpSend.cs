@@ -24,6 +24,7 @@ namespace MoviePlayer
         public static int playCount;
         public static bool shakeFlag;
         public static bool circleFlag;
+        public static int timeCodeTemp;
         //public static int Line;
         //public static bool minusFlag;
         //public static byte numOne;
@@ -62,6 +63,12 @@ namespace MoviePlayer
             int num3 = 3 * (int)(pos / 50) + 2;
             int num4 = 2 * (int)(pos / 50);                  //effectFile数组下标
             int num5 = 2 * (int)(pos / 50) + 1;
+            if (num1 - timeCodeTemp > 9 && num1 - timeCodeTemp < 0)
+            {
+                num1 = timeCodeTemp + 3;
+                num2 = timeCodeTemp + 4;
+                num3 = timeCodeTemp + 5;
+            }
             Debug.WriteLine(num1 + " " + num2 + " " + num3);
             try
             {
@@ -85,9 +92,9 @@ namespace MoviePlayer
                 }
                 else
                 {
-                    data[0] = Module.actionFile[num1];                          //1号缸            
-                    data[1] = Module.actionFile[num2];                          //2号缸
-                    data[2] = Module.actionFile[num3];                          //3号缸
+                    data[0] = (byte)(Module.actionFile[num1] * MainWindow.PlayHeight);      //1号缸            
+                    data[1] = (byte)(Module.actionFile[num2] * MainWindow.PlayHeight);      //2号缸
+                    data[2] = (byte)(Module.actionFile[num3] * MainWindow.PlayHeight);      //3号缸                   
                 }
 
                 data[3] = 0;                                                    //4号缸
@@ -175,8 +182,9 @@ namespace MoviePlayer
 
             array = Mcu.ModbusUdp.ArrayAdd(addr, len, data);
             Data = Mcu.ModbusUdp.MBReqWrite(array);
-            UdpSendData(Data, Data.Length, UdpInit.RemotePoint);
-            //return Data;
+
+            UdpSendData(Data, Data.Length, UdpInit.RemotePoint);          
+            timeCodeTemp = num1;
         }
 
 

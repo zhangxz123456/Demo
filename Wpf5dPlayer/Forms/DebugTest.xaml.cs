@@ -150,9 +150,9 @@ namespace MoviePlayer.Forms
             byte[] array;          //data+addr+len 
             byte[] Data;           //最终发送的数据
 
-            dataNumOne = dataNum[2];
-            dataNumTwo = dataNum[1];
-            dataNumThree = dataNum[0];
+            dataNumOne = (byte)(dataNum[2] * MainWindow.PlayHeight);
+            dataNumTwo = (byte)(dataNum[1] * MainWindow.PlayHeight);
+            dataNumThree = (byte)(dataNum[0] * MainWindow.PlayHeight);
 
             for (int i = 0; i < 8; i++)
             {
