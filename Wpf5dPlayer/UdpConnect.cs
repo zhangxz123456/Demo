@@ -110,6 +110,7 @@ namespace MoviePlayer
             //Module.controlCommand = System.Text.Encoding.Default.GetString(RecData);
             //string str = System.Text.Encoding.ASCII.GetString(RecData);
             Debug.WriteLine(ModbusUdp.ByteToHexStr(RecData));
+            //Debug.WriteLine("字符长度为：" + Module.controlCommand.Length);
             if (RecData[0] == 0xff && RecData[1] == 0x6c)
             {
                 /*保存时间码信息*/

@@ -22,6 +22,7 @@ using System.Configuration;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using MoviePlayer.Forms;
+using System.Threading;
 
 namespace MoviePlayer
 {
@@ -209,7 +210,7 @@ namespace MoviePlayer
             //初始化按指定优先级处理计时器事件
             DTimer = new DispatcherTimer(DispatcherPriority.Normal);
             //设置计时器的时间间隔
-            DTimer.Interval = TimeSpan.FromMilliseconds(1000);
+            DTimer.Interval = TimeSpan.FromMilliseconds(100);
             //超过计时器间隔时发生
             DTimer.Tick += new EventHandler(timer_Tick);
             //系统时间显示，线程开始
@@ -254,18 +255,32 @@ namespace MoviePlayer
             tbTime.Text = DateTime.Now.Hour.ToString("D2") + " : " + DateTime.Now.Minute.ToString("D2") + " : " + DateTime.Now.Second.ToString("D2");
             
             //中控指令
-            //if(Module.controlCommand=="play")
+            //if(Module.controlCommand.Length==12 || Module.controlCommand.Length==13)
             //{
-                
+            //    string str = Module.controlCommand.Remove(0,11);
+            //    ListView.SelectedIndex = int.Parse(str);
+            //    if(UserControlClass.MSStatus == MediaStatus.Play)
+            //    {
+            //        btnStopClickFun();
+            //    }
+            //    Thread.Sleep(100); 
             //    btnPlayClickFun();
-            //    Module.controlCommand = "";                                                                                                                                                                                                     
+            //    Module.controlCommand = "";
             //}
-            //if(Module.controlCommand=="pause")
+
+            //if (Module.controlCommand == "video_play")
             //{
             //    btnPlayClickFun();
             //    Module.controlCommand = "";
             //}
-            //if (Module.controlCommand == "stop")
+
+            //if (Module.controlCommand == "video_pause")
+            //{
+            //    btnPlayClickFun();
+            //    Module.controlCommand = "";
+            //}
+
+            //if (Module.controlCommand == "video_stop")
             //{
             //    btnStopClickFun();
             //    Module.controlCommand = "";
@@ -349,11 +364,11 @@ namespace MoviePlayer
             //如果有多个屏幕，就定义secondwindow的位置，让他在第二个屏幕全屏显示                                                      
             if (sc1.Length > 1)
             {
-                var workingArea = sc1[1].Bounds;           //展厅投影系统
-                if (MainWindow.PlayProjector.Equals("0"))
-                {
-                    workingArea = sc1[0].WorkingArea;
-                }
+                //var workingArea = sc1[1].Bounds;           //展厅投影系统
+                //if (MainWindow.PlayProjector.Equals("0"))
+                //{
+                  var workingArea = sc1[0].WorkingArea;
+                //}
                 UserControlClass.NullBorderWin(UserControlClass.sc2.returnWinSc2(), workingArea.Left, workingArea.Top, workingArea.Width, workingArea.Height);
             }
             else

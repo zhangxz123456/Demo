@@ -285,8 +285,8 @@ namespace MoviePlayer
             data[3] = 0;                                                    //4号缸
             data[4] = 0;                                                    //5号缸
             data[5] = 0;                                                    //6号缸
-            data[6] = 0;                                          //保留
-            data[7] = 0;                                           //保留              
+            data[6] = 0;                                                    //保留
+            data[7] = 0;                                                    //保留              
             data[8] = 0;                                                    //座椅特效  
             data[9] = 0;                                                    //环境特效 
 
