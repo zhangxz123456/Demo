@@ -2,7 +2,7 @@
 <Type>
   <Style>5D</Style>
   <Language>CN</Language>
-  <DOF>3DOF</DOF>
+  <DOF>2DOF</DOF>
   <Height>1</Height>
   <Projector>0</Projector>
 </Type>

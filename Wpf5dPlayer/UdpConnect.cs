@@ -99,6 +99,8 @@ namespace MoviePlayer
 
         delegate void ReceiveCallback(int rlen, byte[] data);
 
+        
+
         public void SetReceiveData(int rlen, byte[] data)
         {
             byte[] RecData;
@@ -107,7 +109,8 @@ namespace MoviePlayer
             //realData = new byte[10];
             Array.Copy(data, 0, RecData, 0, rlen);
             
-            //Module.controlCommand = System.Text.Encoding.Default.GetString(RecData);
+            Module.controlCommand = System.Text.Encoding.Default.GetString(RecData);
+            Module.WriteLogFile(Module.controlCommand +"    Len:"+ Module.controlCommand.Length);
             //string str = System.Text.Encoding.ASCII.GetString(RecData);
             Debug.WriteLine(ModbusUdp.ByteToHexStr(RecData));
             //Debug.WriteLine("字符长度为：" + Module.controlCommand.Length);
@@ -291,10 +294,10 @@ namespace MoviePlayer
                             break;
                     }
                     //判断日期结束发送复位数据(两自由度)
-                    if (clickRegisterFlag == false)
-                    {
-                        UdpSend.SendReset();
-                    }
+                    //if (clickRegisterFlag == false)
+                    //{
+                    //    UdpSend.SendReset();
+                    //}
                 }
             }  //校验日期结尾
 

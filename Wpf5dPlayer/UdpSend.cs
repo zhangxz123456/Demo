@@ -25,6 +25,7 @@ namespace MoviePlayer
         public static bool shakeFlag;
         public static bool circleFlag;
         public static int timeCodeTemp;
+        public static bool movieStop;
         //public static int Line;
         //public static bool minusFlag;
         //public static byte numOne;
@@ -203,7 +204,7 @@ namespace MoviePlayer
             addr = 0;
             len = 10;
             data = new byte[len];
-            if ("2DOF".Equals(MainWindow.PlayLanguage))
+            if ("2DOF".Equals(MainWindow.PlayDOF))
             {
                //两自由度数据
                 data[0] = 127;
@@ -219,7 +220,15 @@ namespace MoviePlayer
             }
 
             //复位指令
-            data[8] = 1;
+
+            if (movieStop == true)
+            {
+                data[8] = 0;
+            }
+            else
+            {
+                data[8] = 1;
+            }
 
             array = Mcu.ModbusUdp.ArrayAdd(addr, len, data);
             Data = Mcu.ModbusUdp.MBReqWrite(array);

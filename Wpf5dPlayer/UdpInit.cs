@@ -20,8 +20,8 @@ namespace MoviePlayer
         public static EndPoint BroadcastRemotePoint;
         public static Socket mySocket;
 
-        public static EndPoint RemotePointBox;             //驱动器远程端
-        public static Socket mySocketBox;                  //驱动器Socket  
+        //public static EndPoint RemotePointBox;             //驱动器远程端
+        //public static Socket mySocketBox;                  //驱动器Socket  
         /// <summary>
         /// udp初始化
         /// </summary>
@@ -29,7 +29,7 @@ namespace MoviePlayer
         {
             IPAddress ip;
             int port;
-            int portBox;         //驱动器端口
+            //int portBox;         //驱动器端口
             string localIp;
             localIp = GetLocalIP();
             string[] splitIp = localIp.Split('.');

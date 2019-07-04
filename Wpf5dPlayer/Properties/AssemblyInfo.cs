@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("MoviePlayer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("SHUQEE")]
 [assembly: AssemblyProduct("MoviePlayer")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
@@ -50,5 +50,5 @@ using System.Windows;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("6.2.2.0")]
+[assembly: AssemblyVersion("6.2.5.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

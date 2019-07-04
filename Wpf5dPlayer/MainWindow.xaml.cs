@@ -40,6 +40,7 @@ namespace MoviePlayer
         public static string playerPath;
         public static double PlayHeight;             //高度数据  1为原始数据 0.9为百分90行程数据
         public static string PlayProjector;          //设置播放画面显示在主屏还是副屏  参数分别为0或1
+        private int a;                               //验证软件正常打开后发复位指令（只发第一次）
 
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(
@@ -64,6 +65,8 @@ namespace MoviePlayer
             timerInit();
             changeBackgroundImage();
             changeLanguage();
+            //UdpSend.SendReset();
+            //Thread.Sleep(1000);            
         }
 
         /// <summary>
@@ -74,7 +77,7 @@ namespace MoviePlayer
             playerPath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,AppDomain.CurrentDomain.BaseDirectory.Length-5);
         }
 
-        
+
         /// <summary>
         /// 更改主界面背景图片
         /// </summary>
@@ -177,6 +180,11 @@ namespace MoviePlayer
                 {
                     btnPlayer.IsEnabled = true;
                     btnPlayer.FontSize = 40;
+                    if (a == 0)
+                    {
+                        UdpSend.SendReset();
+                        a = 1;
+                    }
                     if ("CN".Equals(PlayLanguage))
                     {
                         btnPlayer.Content = "播放";
@@ -309,6 +317,9 @@ namespace MoviePlayer
 
         private void labClose_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            PlayDOF = "";
+            UdpSend.movieStop = true;
+            UdpSend.SendReset();
             System.Windows.Application.Current.Shutdown();
         }
     }
