@@ -115,6 +115,9 @@
     <Compile Include="Forms\DebugTest.xaml.cs">
       <DependentUpon>DebugTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FilmSetting.xaml.cs">
+      <DependentUpon>FilmSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\VersionInformation.xaml.cs">
       <DependentUpon>VersionInformation.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
     <Page Include="Forms\DebugTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\FilmSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Forms\VersionInformation.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -335,6 +342,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\add.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XML\FilmList.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

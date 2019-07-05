@@ -468,6 +468,61 @@ namespace MoviePlayer
         }
 
         /// <summary>
+        /// 读取A-D，A-T，A-S文件
+        /// </summary>
+        /// <param name="filePath">文件路径名</param>
+        public static void readDefultFile(string filePath)
+        {            
+            try
+            {                
+                string filePathD = filePath + @"\A-D";
+                if (!File.Exists(filePathD))
+                {
+                    using (File.Create(filePathD))
+                    {
+                    }
+                }
+                actionFile = File.ReadAllBytes(filePathD);
+            }
+            catch
+            {
+                //MessageBox.Show("动作文件不存在，请检查");
+                actionFile = null;
+            }
+            try
+            {
+                string filePathT = filePath + @"\A-T";
+                if (!File.Exists(filePathT))
+                {
+                    using (File.Create(filePathT))
+                    {
+                    }
+                }
+                effectFile = File.ReadAllBytes(filePathT);
+            }
+            catch
+            {              
+                effectFile = null;
+            }
+            try
+            {
+                string filePathS = filePath + @"\A-S";
+                if (!File.Exists(filePathS))
+                {
+                    using (File.Create(filePathS))
+                    {
+                    }
+                }
+                shakeFile = File.ReadAllBytes(filePathS);
+            }
+            catch
+            {              
+                shakeFile = null;
+            }
+
+        }
+
+        /// <summary>
         /// 日志记录
         /// </summary>
         /// <param name="input">记录的内容</param>

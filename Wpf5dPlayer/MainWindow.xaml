@@ -29,6 +29,8 @@
                 <Label x:Name="label" Content="" Height="51" Canvas.Left="847" Canvas.Top="294" Width="261" FontSize="24"/>
                 <Label x:Name="label1" Content="" Height="46" Canvas.Left="847" Canvas.Top="249" Width="493" FontSize="24"/>
                 <Label x:Name="labClose" Content="X" Height="38" Canvas.Left="1400" Width="40" RenderTransformOrigin="0.174,0.109" FontSize="24" MouseDown="labClose_MouseDown"/>
+                <Label x:Name="labCurrentFilm" Content="" Height="69" Canvas.Left="85" Canvas.Top="513" Width="353" FontSize="20"/>
+                <Label x:Name="labNextFilm" Content="" Height="69" Canvas.Left="85" Canvas.Top="587" Width="353" FontSize="20"/>
             </Canvas>
         </Viewbox>
     </Grid>

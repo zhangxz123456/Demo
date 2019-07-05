@@ -29,8 +29,10 @@ namespace MoviePlayer
     public partial class MainWindow : Window
     {
        
-        DispatcherTimer timerJudge = null;            //验证播放器类型与软件是否注册    
+        DispatcherTimer timerJudge = null;            //验证播放器类型与软件是否注册 
+        DispatcherTimer timerFilm = null;             //监控排片时间与当前时间
         Module module = new Module();
+        FilmSetting fs = new FilmSetting();
         Data winData;
         Player winPlayer;
         UdpInit myUdpInit = new UdpInit();
@@ -65,6 +67,7 @@ namespace MoviePlayer
             timerInit();
             changeBackgroundImage();
             changeLanguage();
+            timerFilmInit();
             //UdpSend.SendReset();
             //Thread.Sleep(1000);            
         }
@@ -146,8 +149,7 @@ namespace MoviePlayer
         }
 
         private void timerJudge_tick(object sender,EventArgs e)
-        {
-
+        {       
             if (UdpConnect.connectFlag == false)  //未与中控板连接    
             {
                 btnPlayer.IsEnabled = false;
@@ -214,6 +216,38 @@ namespace MoviePlayer
 
         }
 
+        private void timerFilm_tick(object sender, EventArgs e)
+        {
+            if ("4DM".Equals(PlayType))
+            {                
+                string s = DateTime.Now.ToShortTimeString().ToString();
+                for (int i = 0; i < 10; i++)
+                {
+                    if (FilmSetting.memberData[i] != null)
+                    {
+                        if (s.Equals(FilmSetting.memberData[i].Start))
+                        {
+                            //MessageBox.Show("开始" + s + FilmSetting.memberData[i].FullMovieName);
+                            labCurrentFilm.Content = "当前影片：" + FilmSetting.memberData[i].MovieName;
+                            if (i < 9)
+                            {
+                                labNextFilm.Content = "下一场影片：" + FilmSetting.memberData[i + 1].MovieName;
+                            }
+                            Module.readDefultFile(FilmSetting.memberData[i].FullMovieName);
+                        }
+                        if (s.Equals(FilmSetting.memberData[i].End))
+                        {
+                            //MessageBox.Show("结束" + s);
+                            labCurrentFilm.Content = "当前影片：";
+                            Module.actionFile = null;
+                            Module.shakeFile = null;
+                            Module.effectFile = null;
+                        }
+                    }
+                }
+            }
+        }
+
         private void timerInit()
         {
             //udp程序启动定时器
@@ -222,12 +256,23 @@ namespace MoviePlayer
             timerJudge.Tick += new EventHandler(timerJudge_tick);
             timerJudge.Start();
         }
+
+        private void timerFilmInit()
+        {
+            timerFilm = new DispatcherTimer();
+            timerFilm.Interval = TimeSpan.FromSeconds(10);
+            timerFilm.Tick += new EventHandler(timerFilm_tick);
+            timerFilm.Start();
+        }
         
 
         private void btnSetting_Click(object sender, RoutedEventArgs e)
         {
-            Setting winSetting = new Setting();
-            winSetting.ShowDialog();
+            //Setting winSetting = new Setting();
+            //winSetting.ShowDialog();
+
+            FilmSetting fs = new FilmSetting();
+            fs.ShowDialog();
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)

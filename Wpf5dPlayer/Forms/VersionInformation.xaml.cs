@@ -37,7 +37,11 @@ namespace MoviePlayer.Forms
                           "电话：020 34885536  \r\n"+
                           "地址：广州市番禺区石基镇市莲路富城工业园3号楼 \r\n"+
                           "邮箱：shueee@shuqee.com \r\n"+
-                          "软件归广州数祺数字科技有限公司版权所有， 任何单位和个人不得复制本程序!";
+                          "软件归广州数祺数字科技有限公司版权所有， 任何单位和个人不得复制本程序! \r\n\r\n"+
+                          "软件类型：" + MainWindow.PlayType + "\r\n" +
+                          "软件语言：" + MainWindow.PlayLanguage + "\r\n" +
+                          "自由度：  " + MainWindow.PlayDOF + "\r\n" +
+                          "行程高度：" + MainWindow.PlayHeight;
             textBox1.Text = "shuqee版本更新信息：\r\n" +
                             "                   V6.2.4 \r\n" +
                             "更新日期：2019/4/11 \r\n" +
@@ -58,6 +62,19 @@ namespace MoviePlayer.Forms
                             "                   V6.2.1 \r\n"+
                             "更新日期：2018/10/25 \r\n"+
                             "更新内容：软件整体升级，修改通信方式，增快数据发送频率，增加数据采集点";
+            }
+            else
+            {
+                textBox.Text = "Software version number：V6.2.4 \r\n"+
+                               "Website：www.shuqee.com \r\n"+
+                               "Telephone：0086 020-34885536 \r\n" +
+                               "Address：Bldg 3.Fucheng industrial park,shilian road,shiji village,shiji town,panyu district,guangzhou,CN.\r\n" +
+                               "Email：shueee@shuqee.com \r\n" +
+                               "      Copyright by Guangzhou Shuqee Digital Tech. Co., Ltd. Any company or personal can not copy this software! \r\n\r\n" +
+                               "Software Type: " + MainWindow.PlayType + "\r\n" +
+                               "Software Language: " + MainWindow.PlayLanguage + "\r\n" +
+                               "PlayDOF: " + MainWindow.PlayDOF + "\r\n" +
+                               "Height: " + MainWindow.PlayHeight + "\r\n";
             }         
         }
     }
