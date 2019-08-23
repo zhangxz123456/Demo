@@ -18,8 +18,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Xml;
 using MoviePlayer.Forms;
-
-
+using System.Net.Sockets;
 
 namespace MoviePlayer
 {
@@ -43,7 +42,7 @@ namespace MoviePlayer
         public static double PlayHeight;             //高度数据  1为原始数据 0.9为百分90行程数据
         public static string PlayProjector;          //设置播放画面显示在主屏还是副屏  参数分别为0或1
         private int a;                               //验证软件正常打开后发复位指令（只发第一次）
-
+        Socket tcpClient = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         [DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
         public static extern int SystemParametersInfo(
             int uAction,
@@ -221,11 +220,13 @@ namespace MoviePlayer
             if ("4DM".Equals(PlayType))
             {                
                 string s = DateTime.Now.ToShortTimeString().ToString();
+                //compareDateTime(FilmSetting.memberData[1].Start);
                 for (int i = 0; i < 10; i++)
                 {
                     if (FilmSetting.memberData[i] != null)
                     {
-                        if (s.Equals(FilmSetting.memberData[i].Start))
+                        //if (s.Equals(FilmSetting.memberData[i].Start))
+                        if(compareDateTime(FilmSetting.memberData[i].Start,FilmSetting.memberData[i].End))
                         {
                             //MessageBox.Show("开始" + s + FilmSetting.memberData[i].FullMovieName);
                             labCurrentFilm.Content = "当前影片：" + FilmSetting.memberData[i].MovieName;
@@ -235,17 +236,52 @@ namespace MoviePlayer
                             }
                             Module.readDefultFile(FilmSetting.memberData[i].FullMovieName);
                         }
-                        if (s.Equals(FilmSetting.memberData[i].End))
+                        if (i < 9)
                         {
-                            //MessageBox.Show("结束" + s);
-                            labCurrentFilm.Content = "当前影片：";
-                            Module.actionFile = null;
-                            Module.shakeFile = null;
-                            Module.effectFile = null;
+                            if (compareDateTime(FilmSetting.memberData[i].End,FilmSetting.memberData[i+1].Start))
+                            {
+                                //MessageBox.Show("结束" + s);
+                                labCurrentFilm.Content = "当前影片：";
+                                Module.actionFile = null;
+                                Module.shakeFile = null;
+                                Module.effectFile = null;
+                            }
                         }
                     }
                 }
             }
+        }
+
+        private bool compareDateTime(string str1,string str2)
+        {
+            try
+            {
+                DateTime dt1 =new DateTime();
+                DateTime dt2 =new DateTime();
+                DateTime dt3 =new DateTime();
+
+                if (str1 != "" && str2 != "")
+                {
+
+                    dt1 = Convert.ToDateTime(str1);
+                    dt2 = Convert.ToDateTime(str2);
+                    dt3 = DateTime.Now;
+                }
+                if (str1 != "" && str2 == "")
+                {
+                    dt1 = Convert.ToDateTime(str1);
+                    dt3 = DateTime.Now;
+                    return DateTime.Compare(dt3, dt1) >= 0;
+                }
+                return DateTime.Compare(dt3, dt1) >= 0 && DateTime.Compare(dt3, dt2) < 0;
+               
+            }
+            catch (Exception)
+            {
+                //throw;
+                return false;
+            }
+            
         }
 
         private void timerInit()
@@ -273,6 +309,9 @@ namespace MoviePlayer
 
             FilmSetting fs = new FilmSetting();
             fs.ShowDialog();
+
+            //Projector pj = new Projector();
+            //pj.ShowDialog();
         }
 
         private void btnHelp_Click(object sender, RoutedEventArgs e)
@@ -367,5 +406,19 @@ namespace MoviePlayer
             UdpSend.SendReset();
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void openProjector()
+        {
+            byte[] data = {0x30,0x30,0x50,0x4F,0x4E,0x0D};
+            //tcpClient.Connect(UdpInit.transformIP(""));
+        }
+
+        private void closeProjector()
+        {
+            byte[] data = { 0x30, 0x30, 0x50, 0x4F, 0x46, 0x0D };
+            
+        }
+
+        
     }
 }

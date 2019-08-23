@@ -118,6 +118,16 @@ namespace MoviePlayer
             }
         }
 
+        public static EndPoint transformIP(string strIP,string strPort)
+        {
+            IPAddress ip;
+            IPAddress.TryParse(strIP,out ip);
+            int port;
+            Int32.TryParse(strPort,out port);
+            IPEndPoint ipep = new IPEndPoint(ip, port);
+            return (EndPoint)(ipep);
+        }
+
         /// <summary>
         /// 获取本地ip地址
         /// </summary>

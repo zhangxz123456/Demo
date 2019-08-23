@@ -7,7 +7,29 @@
         mc:Ignorable="d"
         Title="Setting" Height="300" Width="300" Icon="/MoviePlayer;component/30001.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Label x:Name="label" Content="To be updated....." HorizontalAlignment="Left" Height="72" Margin="47,98,0,0" VerticalAlignment="Top" Width="204" Padding="5" FontSize="20"/>
-
+        <Label x:Name="label" Content="Type :" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="62" FontSize="16"/>
+        <Label x:Name="label1" Content="Style" HorizontalAlignment="Left" Height="34" Margin="22,50,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="label2" Content="Language" HorizontalAlignment="Left" Height="34" Margin="22,80,0,0" VerticalAlignment="Top" Width="77"/>
+        <Label x:Name="label3" Content="DOF" HorizontalAlignment="Left" Height="34" Margin="22,110,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.567,2.06"/>
+        <Label x:Name="label4" Content="Height" HorizontalAlignment="Left" Height="34" Margin="22,140,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.567,2.06"/>
+        <Label x:Name="label5" Content="Projector" HorizontalAlignment="Left" Height="34" Margin="22,170,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.567,2.06"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="20" Margin="104,50,0,0" VerticalAlignment="Top" Width="95">
+            <ComboBoxItem>5D</ComboBoxItem>
+            <ComboBoxItem>4DM</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Height="20" Margin="104,80,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.467,2.889">
+            <ComboBoxItem>EN</ComboBoxItem>
+            <ComboBoxItem>CN</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Height="20" Margin="104,110,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.467,2.889">
+            <ComboBoxItem>2DOF</ComboBoxItem>
+            <ComboBoxItem>3DOF</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBox3" HorizontalAlignment="Left" Height="20" Margin="104,170,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.467,2.889">
+            <ComboBoxItem>0</ComboBoxItem>
+            <ComboBoxItem>1</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="104,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95"/>
+        <Button x:Name="button" Content="Modify" HorizontalAlignment="Left" Height="22" Margin="104,226,0,0" VerticalAlignment="Top" Width="61" Click="button_Click"/>
     </Grid>
 </Window>

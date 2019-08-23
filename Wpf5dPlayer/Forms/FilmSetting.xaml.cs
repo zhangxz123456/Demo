@@ -31,24 +31,8 @@ namespace MoviePlayer
         {
             InitializeComponent();
             addMember();
-            ReadType();             
-        }
-
-        private void addMember()
-        {
-            memberData = new ObservableCollection<Member>();
-            for (int i = 0; i < 10; i++)
-            {
-                memberData.Add(new Member()
-                {
-                    id = i,
-                    Start = "",
-                    End = "",
-                    MovieName="",
-                    FullMovieName="",
-                });
-            }
-            dataGrid.DataContext = memberData;
+            ReadFilmList();
+            //changeLanguage();            
         }
 
 
@@ -109,6 +93,37 @@ namespace MoviePlayer
             public event PropertyChangedEventHandler PropertyChanged;
         }
 
+        private void changeLanguage()
+        {
+            textColum1.Header = "StartTime";
+            textColum2.Header = "EndTime";
+            textColum3.Header = "Film";
+            templateColumn.Header = "Operation";
+            button.Content = "Save";
+            Title = "Film Setting";            
+        }
+
+
+        /// <summary>
+        /// 初始化列表
+        /// </summary>
+        private void addMember()
+        {
+            memberData = new ObservableCollection<Member>();
+            for (int i = 0; i < 10; i++)
+            {
+                memberData.Add(new Member()
+                {
+                    id = i,
+                    Start = "",
+                    End = "",
+                    MovieName = "",
+                    FullMovieName = "",
+                });
+            }
+            dataGrid.DataContext = memberData;
+        }
+
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
@@ -125,6 +140,7 @@ namespace MoviePlayer
             string s1 = info.FullName;          
             memberData[dataGrid.SelectedIndex].MovieName = s;
             memberData[dataGrid.SelectedIndex].FullMovieName = s1;
+                        
         }
 
 
@@ -155,8 +171,8 @@ namespace MoviePlayer
                         memberData[i].End = checkStrStartAndEnd(memberData[i].End);
                     }
                 }
-            }      
-            SaveConfig();        
+            }
+            SaveFilmList();        
         }
 
 
@@ -174,22 +190,21 @@ namespace MoviePlayer
                 string strMinute = str.Substring(s + 1);
                 int strHourValue = Convert.ToInt32(strHour);
                 int strMinuteValue = Convert.ToInt32(strMinute);
-                if(strHourValue>24)
+                if (strHourValue > 24)
                 {
-                    System.Windows.MessageBox.Show(str+"输入有误:小时不能大于24");
+                    System.Windows.MessageBox.Show(str + "输入有误:小时不能大于24");
                     str = "";
                 }
-                if(strHour.Length == 2 && strHourValue < 10)
+                if (strHour.Length == 2 && strHourValue < 10)
                 {
                     System.Windows.MessageBox.Show(str + "输入有误：小时前不能有0");
-                    str ="";
+                    str = "";
                 }
                 if (strMinuteValue > 59)
                 {
                     System.Windows.MessageBox.Show(str + "输入有误:分钟不能大于59");
                     str = "";
                 }
-
             }
             catch (Exception)
             {
@@ -205,7 +220,7 @@ namespace MoviePlayer
             return System.Text.Encoding.UTF8.GetBytes(srcString).Length > srcString.Length;
         }
  
-        private void ReadType()
+        private void ReadFilmList()
         {
             string xml = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 5) + @"\XML\" + "FilmList.xml";
             FileInfo finfo = new FileInfo(xml);
@@ -229,7 +244,7 @@ namespace MoviePlayer
         /// <summary>
         /// 保存排片数据到FilmList.xml文件中
         /// </summary>
-        public void SaveConfig()
+        public void SaveFilmList()
         {
             string xml= AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 5) + @"\XML\" + "FilmList.xml";
             FileInfo finfo = new FileInfo(xml);

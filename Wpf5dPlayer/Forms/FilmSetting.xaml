@@ -10,22 +10,21 @@
     <Grid>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="0,0,0,62" CanUserResizeColumns="False" CanUserResizeRows="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="开始时间" Width="110" Binding="{Binding Start}"/>
-                <DataGridTextColumn Header="结束时间" Width="110" Binding="{Binding End}"/>
-                <DataGridTextColumn Header="影片" Width="200" Binding="{Binding MovieName}"/>
-                <DataGridTemplateColumn Header="操作" MinWidth="80">
+                <DataGridTextColumn x:Name="textColum1" Header="开始时间" Width="110" Binding="{Binding Start}"/>
+                <DataGridTextColumn x:Name="textColum2" Header="结束时间" Width="110" Binding="{Binding End}"/>
+                <DataGridTextColumn x:Name="textColum3" Header="影片" Width="200" Binding="{Binding MovieName}"/>
+                <DataGridTemplateColumn x:Name="templateColumn" Header="操作" MinWidth="80" CanUserSort="True" CanUserResize="True">
                     <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="添加"  Click="Add_Click" />
-                                <!--<Label Content=""/>-->
-                                <Button Content="清空"  Click="Clear_Click" />
+                        <DataTemplate >
+                            <StackPanel x:Name="sp" Orientation="Horizontal">
+                                <Button x:Name="btnAdd"  Content="添加"  Click="Add_Click" />
+                                <Button x:Name="btnClear" Content="清空"  Click="Clear_Click" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="button" Content="保存" HorizontalAlignment="Left" Height="32" Margin="215,296,0,0" VerticalAlignment="Top" Width="69" Click="Save_Click"/>
+        <Button x:Name="button" Content="保存" HorizontalAlignment="Left" Height="32" Margin="364,238,0,0" VerticalAlignment="Top" Width="69" Click="Save_Click"/>
     </Grid>
 </Window>

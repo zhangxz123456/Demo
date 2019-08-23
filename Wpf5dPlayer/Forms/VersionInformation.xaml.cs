@@ -32,7 +32,7 @@ namespace MoviePlayer.Forms
             Title = "软件信息";
             tabVersion.Header = "版本信息";
             tabUpdateRecord.Header = "历史记录";
-            textBox.Text = "软件版本号：V6.2.4 \r\n"+
+            textBox.Text = "软件版本号：V6.2.5 \r\n"+
                           "网址：www.shuqee.cn \r\n"+
                           "电话：020 34885536  \r\n"+
                           "地址：广州市番禺区石基镇市莲路富城工业园3号楼 \r\n"+
@@ -43,6 +43,12 @@ namespace MoviePlayer.Forms
                           "自由度：  " + MainWindow.PlayDOF + "\r\n" +
                           "行程高度：" + MainWindow.PlayHeight;
             textBox1.Text = "shuqee版本更新信息：\r\n" +
+                            "                   V6.2.5 \r\n" +
+                            "更新日期：2019/7/8 \r\n" +
+                            "更新内容：增加TMS模块 \r\n" +
+                            "          软件版本信息增加去配置信息显示   \r\n" +
+                            "/**************************************/ \r\n" +
+                            "shuqee版本更新信息：\r\n" +
                             "                   V6.2.4 \r\n" +
                             "更新日期：2019/4/11 \r\n" +
                             "更新内容：优化界面，删除冗余代码 \r\n" +
@@ -65,7 +71,7 @@ namespace MoviePlayer.Forms
             }
             else
             {
-                textBox.Text = "Software version number：V6.2.4 \r\n"+
+                textBox.Text = "Software version number：V6.2.5 \r\n"+
                                "Website：www.shuqee.com \r\n"+
                                "Telephone：0086 020-34885536 \r\n" +
                                "Address：Bldg 3.Fucheng industrial park,shilian road,shiji village,shiji town,panyu district,guangzhou,CN.\r\n" +

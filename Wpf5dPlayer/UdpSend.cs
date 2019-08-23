@@ -26,10 +26,8 @@ namespace MoviePlayer
         public static bool circleFlag;
         public static int timeCodeTemp;
         public static bool movieStop;
-        //public static int Line;
-        //public static bool minusFlag;
-        //public static byte numOne;
-        //public static int shakeCount;
+        public static byte dataLight;
+       
         public UdpSend()
         {
             Thread ThreadUdpSend = new Thread(new ThreadStart(Send));
@@ -49,7 +47,7 @@ namespace MoviePlayer
 
         public static void SendWrite(double pos)
         {
-            byte[] data;
+            byte[] data;           
             ushort addr;
             ushort len;
             byte[] array;          //data+addr+len 
@@ -104,52 +102,6 @@ namespace MoviePlayer
                 //data[6] = 0;                                                  //保留
                 //data[7] = 0;                                                  //保留
 
-                //震动标志
-                //幅度
-                //data[6] = (byte)range;
-                //data[7] = (byte)rate;
-
-                //if(circleFlag == true)
-                //{
-                //    if (rate  >= tempRate)
-                //    {
-                //        minusFlag = true;
-                //    }
-                //    if (rate <= 1)
-                //    {
-                //        minusFlag = false;
-                //    }
-                //    if (rate >= 0 && minusFlag == false)
-                //    {
-                //        try
-                //        {
-                //            rate += 1;
-                //        }
-                //        catch
-                //        {
-                //            rate = 1;
-                //        }
-
-                //    }
-                //    if (rate <= 90 && minusFlag == true)
-                //    {
-                //        try
-                //        {
-                //            rate -= 1;
-                //        }
-                //        catch
-                //        {
-                //            rate = 0;
-                //        }
-                //    }
-                //    data[6] = (byte)range;
-                //    data[7] = (byte)rate;
-                //}
-                //else
-                //{
-                //    data[6] = (byte)range;
-                //    data[7] = (byte)rate;
-                //}
                 if (Module.shakeFile != null)
                 {
                     if (num5 > Module.shakeFile.Length)
@@ -167,12 +119,15 @@ namespace MoviePlayer
                 if (num5 > Module.effectFile.Length)
                 {
                     data[8] = 0;                                                 //座椅特效  
-                    data[9] = 0;                                                 //环境特效 
+                    //data[9] = 0;                                               //环境特效 
+                    data[9] = dataLight;
                 }
                 else
                 {
+                    
                     data[8] = Module.effectFile[num5];                          //座椅特效  
-                    data[9] = Module.effectFile[num4];                          //环境特效 
+                    //data[9] = Module.effectFile[num4];                        //环境特效 
+                    data[9] = (byte)(Module.effectFile[num4] | dataLight);
                 }
                 Debug.WriteLine((int)(3 * (pos / 50)));
             }
@@ -246,47 +201,6 @@ namespace MoviePlayer
             len = 10;
             data = new byte[len];
 
-            //if (numOne >= 90)
-            //{
-            //    minusFlag = true;
-            //}
-            //if (numOne <= 0)
-            //{
-            //    minusFlag = false;
-            //}
-            //if (numOne >= 0 && minusFlag == false)
-            //{
-            //    try
-            //    {
-            //        numOne += (byte)rate;
-            //    }
-            //    catch
-            //    {
-            //        numOne = 90;
-            //    }
-                
-            //}
-            //if (numOne <= 90 && minusFlag == true)
-            //{
-            //    try
-            //    {
-            //        numOne -= (byte)rate;
-            //    }
-            //    catch
-            //    {
-            //        numOne = 0;
-            //    }
-            //}
-            //if(numOne>90)
-            //{
-            //    numOne = 90;
-            //}
-            //else if(numOne<0)
-            //{
-            //    numOne = 0;
-            //}
-            //double num = range * Math.Sin(numOne * Math.PI/180);
-
             //Debug.WriteLine(num+"======="+numOne);
             data[0] = 255;
             data[1] = 255;
@@ -302,14 +216,7 @@ namespace MoviePlayer
             array = Mcu.ModbusUdp.ArrayAdd(addr, len, data);
             Data = Mcu.ModbusUdp.MBReqWrite(array);
             UdpSendData(Data, Data.Length, UdpInit.RemotePoint);
-            //Debug.WriteLine("发送的总数据为："+ shakeCount++);
-            
-            //if (shakeCount == 100)
-            //{
-            //    shakeFlag = false;
-            //    shakeCount = 0;
-            //}
-            //return Data;
+          
         }
 
 

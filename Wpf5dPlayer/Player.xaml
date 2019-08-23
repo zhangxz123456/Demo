@@ -59,6 +59,9 @@
                                 <MenuItem Header=" Default Play " Name="MenuDefault" Tag="DefaultPlay" PreviewMouseLeftButtonDown="ChangeMode_PreviewMouseLeftButtonDown"></MenuItem>
                                 <MenuItem Header=" Loop Play " Name="MenuLoop" Tag="LoopPlay" PreviewMouseLeftButtonDown="ChangeMode_PreviewMouseLeftButtonDown"></MenuItem>
                             </MenuItem>
+                            <MenuItem Header=" Light Mode" Name="MenuLight" PreviewMouseLeftButtonDown="MenuLight_PreviewMouseLeftButtonDown">
+                                
+                            </MenuItem>
                             <!--<MenuItem Header="    停  止   " PreviewMouseLeftButtonDown="ImgStop_PreviewMouseLeftButtonDown"></MenuItem>-->
                         </MenuItem>
                         <MenuItem Header="   shutdown   " Name="MenuCloseComputer" FontSize="14" PreviewMouseLeftButtonDown="MenuCloseComputer_PreviewMouseLeftButtonDown" >

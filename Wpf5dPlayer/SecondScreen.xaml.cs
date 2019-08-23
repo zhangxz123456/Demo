@@ -22,7 +22,7 @@ namespace MoviePlayer
     /// </summary>
     public partial class SecondScreen : Window
     {
-        private Player player;
+        private Player player ;
         /// <summary>
         /// 播放flash文件
         /// </summary>

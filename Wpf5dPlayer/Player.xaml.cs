@@ -115,6 +115,12 @@ namespace MoviePlayer
         /// </summary>
         private string ModePlayTag;
 
+
+        /// <summary>
+        /// 灯光模式选择
+        /// </summary>
+        private string ModeLightTag;
+
         /// <summary>
         /// 选中的影片的全路径名
         /// </summary>
@@ -233,6 +239,7 @@ namespace MoviePlayer
                 MenuFile.Header = "    文 件    ";
                 MenuClearFiles.Header = "清空播放列表";
                 MenuPlay.Header = "    播 放    ";
+                MenuLight.Header = "  灯光模式  ";
                 ModePlay.Header = "   播放模式  ";
                 MenuRepeat.Header = " 重复播放 ";
                 MenuDefault.Header = " 默认播放 ";
@@ -255,42 +262,42 @@ namespace MoviePlayer
             tbTime.Text = DateTime.Now.Hour.ToString("D2") + " : " + DateTime.Now.Minute.ToString("D2") + " : " + DateTime.Now.Second.ToString("D2");
 
             //中控指令
-            if (Module.controlCommand.Length == 12 || Module.controlCommand.Length == 13)
-            {
-                string str = Module.controlCommand.Remove(0, 11);
-                try
-                {
-                    ListView.SelectedIndex = int.Parse(str);
-                }
-                catch
-                {
-                    ListView.SelectedIndex = 0;
-                }                
-                btnPlayClickFun();
-                Module.WriteLogFile(Module.controlCommand);
-                Module.controlCommand = "";
-            }
+            //if (Module.controlCommand.Length == 12 || Module.controlCommand.Length == 13)
+            //{
+            //    string str = Module.controlCommand.Remove(0, 11);
+            //    try
+            //    {
+            //        ListView.SelectedIndex = int.Parse(str);
+            //    }
+            //    catch
+            //    {
+            //        ListView.SelectedIndex = 0;
+            //    }                
+            //    btnPlayClickFun();
+            //    Module.WriteLogFile(Module.controlCommand);
+            //    Module.controlCommand = "";
+            //}
 
-            if (Module.controlCommand.Equals("video_play"))
-            {
-                btnPlayClickFun();
-                Module.WriteLogFile(Module.controlCommand);
-                Module.controlCommand = "";
-            }
+            //if (Module.controlCommand.Equals("video_play"))
+            //{
+            //    btnPlayClickFun();
+            //    Module.WriteLogFile(Module.controlCommand);
+            //    Module.controlCommand = "";
+            //}
 
-            if (Module.controlCommand.Equals("video_pause"))
-            {
-                btnPlayClickFun();
-                Module.WriteLogFile(Module.controlCommand);
-                Module.controlCommand = "";
-            }
+            //if (Module.controlCommand.Equals("video_pause"))
+            //{
+            //    btnPlayClickFun();
+            //    Module.WriteLogFile(Module.controlCommand);
+            //    Module.controlCommand = "";
+            //}
 
-            if (Module.controlCommand.Equals("video_stop"))
-            {
-                btnStopClickFun();
-                Module.WriteLogFile(Module.controlCommand);
-                Module.controlCommand = "";
-            }
+            //if (Module.controlCommand.Equals("video_stop"))
+            //{
+            //    btnStopClickFun();
+            //    Module.WriteLogFile(Module.controlCommand);
+            //    Module.controlCommand = "";
+            //}
         }
 
         /// <summary>
@@ -648,7 +655,7 @@ namespace MoviePlayer
         /// 给选中的菜单项打上勾
         /// </summary>
         /// <param name="modeTag">选中的播放模式</param>
-        private void MenuModePlayTick(string modeTag )
+        private void MenuModePlayTick(string modeTag, string menuLightTag)
         {
             switch (modeTag)
             {
@@ -665,12 +672,23 @@ namespace MoviePlayer
                 case "LoopPlay":
                     MenuRepeat.IsChecked = false;
                     MenuDefault.IsChecked = false;
-                    MenuLoop.IsChecked = true; 
+                    MenuLoop.IsChecked = true;
                     break;
             }
+            //if (menuLightTag.Equals("close"))
+            //{
+            //    MenuLight.IsChecked = false;
+            //    UdpSend.dataLight = 0;
+            //}
+            //else
+            //{
+            //    MenuLight.IsChecked = true;
+            //    UdpSend.dataLight = 64;
+            //}
+
         }
 
-     
+
 
         #region  播放列表右键菜单
         /// <summary>
@@ -1062,12 +1080,12 @@ namespace MoviePlayer
             switch (SSStatus)
             {
                 case SoundStatus.Sound:
-                    ImgMute2.Visibility = Visibility.Hidden;
-                    ImgMute.Visibility = Visibility.Visible;
+                   // ImgMute2.Visibility = Visibility.Hidden;
+                   // ImgMute.Visibility = Visibility.Visible;
                     break;
                 case SoundStatus.Mute:
-                    ImgMute.Visibility = Visibility.Hidden;
-                    ImgMute2.Visibility = Visibility.Visible;
+                   // ImgMute.Visibility = Visibility.Hidden;
+                   // ImgMute2.Visibility = Visibility.Visible;
                     break;
             }
         }
@@ -1295,6 +1313,7 @@ namespace MoviePlayer
                 XmlNode childNode = xmlDoc.SelectSingleNode("Mode");
                 XmlElement element = (XmlElement)childNode;
                 element["Change"].InnerText = ModePlayTag;
+                element["ModeLight"].InnerText = ModeLightTag;
                 xmlDoc.Save(MainWindow.playerPath + @"\XML\" + "Mode.xml");
             }
         }
@@ -1314,8 +1333,9 @@ namespace MoviePlayer
                 XmlNode childNode = xmlDoc.SelectSingleNode("Mode");
                 XmlElement element = (XmlElement)childNode;
                 ModePlayTag = element["Change"].InnerText;
+                ModeLightTag = element["ModeLight"].InnerText;
             }
-            MenuModePlayTick(ModePlayTag);
+            MenuModePlayTick(ModePlayTag,ModeLightTag);
         }
         /// <summary>
         /// 读取声音大小信息
@@ -2223,6 +2243,23 @@ namespace MoviePlayer
             this.Hide();
         }
 
+        private void MenuLight_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (MenuLight.IsChecked)
+            {
+                MenuLight.IsChecked = false;
+                ModeLightTag = "close";
+                UdpSend.dataLight = 0;
+                SaveMode();
+            }
+            else
+            {
+                MenuLight.IsChecked = true;
+                ModeLightTag = "open";
+                UdpSend.dataLight = 64;
+                SaveMode();
+            }
+        }
     }
 }
 

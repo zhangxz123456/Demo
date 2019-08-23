@@ -94,8 +94,11 @@ namespace MoviePlayer.Forms
         }
 
         private void timerMovie_tick(object sender, EventArgs e)
-        {     
-            showData();
+        {
+            if (UdpConnect.isRegistered)
+            {
+                showData();
+            }
         }
 
 
